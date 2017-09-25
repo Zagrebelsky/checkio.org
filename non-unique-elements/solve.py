@@ -8,6 +8,17 @@ def checkio(data):
     #It's used for auto-testing and must return a result for check.
 
     #replace this for solution
+
+    count = {}
+
+    for char in data:
+        if char in count:
+            count[char] += 1
+        else:
+            count[char] = 1
+    new_list = [k for k, v in count.items() if v == 1]
+    for i in new_list:
+        data.remove(i)
     return data
 
 #Some hints
@@ -18,7 +29,7 @@ def checkio(data):
 
 if __name__ == "__main__":
     #These "asserts" using only for self-checking and not necessary for auto-testing
-    assert list(checkio([1, 2, 3, 1, 3])) == [1, 3, 1, 3], "1st example"
+    assert list(checkio([1, 2, 3, 1, 3, 4])) == [1, 3, 1, 3], "1st example"
     assert list(checkio([1, 2, 3, 4, 5])) == [], "2nd example"
     assert list(checkio([5, 5, 5, 5, 5])) == [5, 5, 5, 5, 5], "3rd example"
     assert list(checkio([10, 9, 10, 10, 9, 8])) == [10, 9, 10, 10, 9], "4th example"
